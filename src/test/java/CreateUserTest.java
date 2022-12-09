@@ -10,7 +10,7 @@ public class CreateUserTest extends BaseTest {
     @Test
     @Description("Негативный тест создания пользователя, который уже есть в базе")
     public void createUserExistsFail() {
-        Response response = getExistingUserAndRegisterHim();
+        Response response = createExistingUserAndRegisterHim();
         checkIfResponseCodeForbidden(response);
         checkIfTextEqualsUserAlreadyExists(response);
     }
@@ -18,7 +18,7 @@ public class CreateUserTest extends BaseTest {
     @Test
     @Description("Позитивный тест создания нового пользователя")
     public void createUserNewSuccess() {
-        Response response = getNewUserAndRegisterHim();
+        Response response = createNewUserAndRegisterHim();
         checkResponseCodeOk(response);
         checkIfTextEqualsTrue(response);
     }
@@ -26,7 +26,7 @@ public class CreateUserTest extends BaseTest {
     @Test
     @Description("Негативный тест создания нового пользователя с незаполненным email")
     public void createUserNewWithEmptyPasswordFail() {
-        Response response = getNewUserWithEmptyFieldAndRegisterHim("email");
+        Response response = createNewUserWithEmptyFieldAndRegisterHim("password");
         checkIfResponseCodeForbidden(response);
         checkIfTextEqualsSomeFieldsAreRequired(response);
     }
@@ -34,14 +34,14 @@ public class CreateUserTest extends BaseTest {
     @Test
     @Description("Негативный тест создания нового пользователя с незаполненным именем")
     public void createUserNewWithEmptyNameFail() {
-        Response response = getNewUserWithEmptyFieldAndRegisterHim("name");
+        Response response = createNewUserWithEmptyFieldAndRegisterHim("name");
         checkIfResponseCodeForbidden(response);
         checkIfTextEqualsSomeFieldsAreRequired(response);
     }
     @Test
     @Description("Негативный тест создания нового пользователя с незаполненным паролем")
     public void createUserNewWithEmptyEmailFail() {
-        Response response = getNewUserWithEmptyFieldAndRegisterHim("password");
+        Response response = createNewUserWithEmptyFieldAndRegisterHim("email");
         checkIfResponseCodeForbidden(response);
         checkIfTextEqualsSomeFieldsAreRequired(response);
     }
