@@ -16,19 +16,15 @@ public class JsonHelper {
                 .post(endpoint);
     }
 
-    @Step("Выводим тела ответа")
-    public static void printResponse(Response response) {
-        System.out.println("\n\rResponse:");
-        response.prettyPrint();
-    }
-
     @Step("Получаем код статуса ответа сервера")
     static int checkResponseCode(Response response) {
+        System.out.println("\nResponse:");
+        response.then().log().body();
         return response.statusCode();
     }
 
     @Step("Получаем значение по ключу из тела ответа")
     public static String getValueByKey(Response response, String key) {
-        return response.then().log().body().extract().body().path(key).toString();
+        return response.then().extract().body().path(key).toString();
     }
 }
