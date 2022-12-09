@@ -21,7 +21,7 @@ public class GeneratorHelper {
 
     @Step("Генерируем имя пользователя")
     public static String randomName() {
-        name = Faker.instance().name().firstName();
+        name = new Faker().name().firstName();
         return name;
     }
 

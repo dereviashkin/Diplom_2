@@ -12,18 +12,18 @@ public class UserHelper {
 
     @Step("Гененируем случаного пользователя")
     private static User generateRandomUser() {
-        return new User(randomEmail(), randomName(), randomPassword());
+        return new User(randomName(), randomEmail(), randomPassword());
     }
 
     @Step("Гененируем случаного пользователя без пароля")
     private static User generateRandomUserWithEmptyField(String field) {
-        switch (field){
+        switch (field) {
             case "email":
-                return new User("", randomName(), randomPassword());
+                return new User("", randomEmail(), randomPassword());
             case "name":
-                return new User(randomEmail(), "", randomPassword());
+                return new User(randomName(), "", randomPassword());
             case "password":
-                return new User(randomEmail(), randomName(), "");
+                return new User(randomName(), randomEmail(), "");
             default:
                 return null;
         }
@@ -31,7 +31,7 @@ public class UserHelper {
 
     @Step("Используем существующего пользователя")
     private static User existingUser() {
-        return new User("test-data@yandex.ru", "Username", "password");
+        return new User("Username", "test-data@yandex.ru", "password");
     }
 
     @Step("Берем заведомо существующие в базе данные и отправляем их на регистрацию")
