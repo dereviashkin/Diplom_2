@@ -16,7 +16,7 @@ public class GeneratorHelper {
 
     @Step("Генерируем пароль длиной 8 знаков")
     public static String randomPassword() {
-        return randomString(7);
+        return randomString(8);
     }
 
     @Step("Генерируем имя пользователя")
@@ -27,6 +27,8 @@ public class GeneratorHelper {
 
     @Step("Генерируем почтовый ящик")
     public static String randomEmail() {
-        return name + randomString(3) + "@yandex.ru";
+        if (name != null) {
+            return name + randomString(3) + "@yandex.ru";
+        } else return randomString(3) + "@yandex.ru";
     }
 }
