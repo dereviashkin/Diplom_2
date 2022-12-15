@@ -28,7 +28,7 @@ public class GeneratorHelper {
     @Step("Генерируем почтовый ящик")
     public static String randomEmail() {
         if (name != null) {
-            return name + randomString(3) + "@yandex.ru";
+            return name.toLowerCase() + randomString(3) + "@yandex.ru";
         } else return randomString(3) + "@yandex.ru";
     }
 }
