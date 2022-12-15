@@ -12,8 +12,8 @@ public class LoginUserTest extends BaseTest {
     public void loginUserExistsSuccess() {
         createNewUserAndRegisterHim();
         Response response = getRegisteredUserAndLogin();
-        checkResponseCodeOk(response);
-        checkIfTextEqualsTrue(response);
+        checkIfResponseCodeOk(response);
+        checkIfKeySuccessValueEqualsTrue(response);
     }
 
     @Test
@@ -22,8 +22,8 @@ public class LoginUserTest extends BaseTest {
         createNewUserAndRegisterHim();
         Response response = getRegisteredUserIncorrectPasswordAndLogin();
         checkIfResponseCodeUnauthorized(response);
-        checkIfTextEqualsFalse(response);
-        checkIfTextEqualsEmailOrPassAreIncorrect(response);
+        checkIfKeySuccessValueEqualsFalse(response);
+        checkIfKeyMessageValueEqualsEmailOrPassAreIncorrect(response);
     }
 
     @Test
@@ -32,7 +32,7 @@ public class LoginUserTest extends BaseTest {
         createNewUserAndRegisterHim();
         Response response = getRegisteredUserIncorrectEmailAndLogin();
         checkIfResponseCodeUnauthorized(response);
-        checkIfTextEqualsFalse(response);
-        checkIfTextEqualsEmailOrPassAreIncorrect(response);
+        checkIfKeySuccessValueEqualsFalse(response);
+        checkIfKeyMessageValueEqualsEmailOrPassAreIncorrect(response);
     }
 }
