@@ -3,7 +3,7 @@ package helpers;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
-import static date.Endpoints.userInfo;
+import static date.Endpoints.userInfoEndpoint;
 import static helpers.AuthHelper.getAccessToken;
 import static helpers.UserHelper.changeRegisteredUserFieldRandom;
 import static io.restassured.RestAssured.given;
@@ -61,16 +61,16 @@ public class RestHelper {
 
     @Step("Отправляем запрос на изменение выбранного поля пользователя с аутентификацией")
     public static Response sendPatchRequestChangeUserFieldWithAuth(String fieldToChange) {
-        return sendPatchRequestWithAuth(getAccessToken(), changeRegisteredUserFieldRandom(fieldToChange), userInfo);
+        return sendPatchRequestWithAuth(getAccessToken(), changeRegisteredUserFieldRandom(fieldToChange), userInfoEndpoint);
     }
 
     @Step("Отправляем запрос на изменение выбранного поля пользователя")
     public static Response sendPatchRequestChangeUserFieldNoAuth(String fieldToChange) {
-        return sendPatchRequestNoAuth(changeRegisteredUserFieldRandom(fieldToChange), userInfo);
+        return sendPatchRequestNoAuth(changeRegisteredUserFieldRandom(fieldToChange), userInfoEndpoint);
     }
 
     @Step("Используя AccessToken созданного пользователя получаем информацию о нём")
     public static Response getRegisteredUserInfo() {
-        return sendGetRequest(userInfo, getAccessToken());
+        return sendGetRequest(userInfoEndpoint, getAccessToken());
     }
 }
