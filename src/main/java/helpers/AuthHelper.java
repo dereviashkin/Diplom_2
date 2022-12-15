@@ -30,7 +30,6 @@ public class AuthHelper {
     }
 
     public static String getAccessToken() {
-        System.out.println("\nAccess Token: " + accessToken);
         return accessToken;
     }
 }

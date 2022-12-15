@@ -47,9 +47,17 @@ public class RestHelper {
                 .patch(endpoint);
     }
 
+    @Step("Отправляем DELETE запрос с авторизацией")
+    public static Response sendDeleteRequestWithAuth(String token, String endpoint) {
+        return given()
+                .header("Content-type", "application/json")
+                .header("Authorization", token)
+                .delete(endpoint);
+    }
+
     @Step("Получаем код статуса ответа сервера")
     static int checkResponseCode(Response response) {
-        System.out.println("\nResponse:");
+        System.out.println("Response:");
         response.then().log().body();
         return response.statusCode();
     }
@@ -61,6 +69,7 @@ public class RestHelper {
 
     @Step("Отправляем запрос на изменение выбранного поля пользователя с аутентификацией")
     public static Response sendPatchRequestChangeUserFieldWithAuth(String fieldToChange) {
+        System.out.println("\nAccess Token: " + getAccessToken());
         return sendPatchRequestWithAuth(getAccessToken(), changeRegisteredUserFieldRandom(fieldToChange), userInfoEndpoint);
     }
 

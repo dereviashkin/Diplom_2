@@ -9,7 +9,7 @@ import static helpers.UserHelper.createNewUserAndRegisterHim;
 public class ChangeUserDataTest extends BaseTest {
 
     @Test
-    @Description("Положительный тест получения информации о зарегистрированном пользователе")
+    @Description("Позитивный тест получения информации о зарегистрированном пользователе")
     public void getInfoCorrectSuccess() {
         createNewUserAndRegisterHim();
         Response response = getRegisteredUserInfo();
@@ -18,7 +18,7 @@ public class ChangeUserDataTest extends BaseTest {
     }
 
     @Test
-    @Description("Положительный тест изменения имени зарегистрированного пользователя с аутентификацией")
+    @Description("Позитивный тест изменения имени зарегистрированного пользователя с аутентификацией")
     public void patchNameCorrectSuccess() {
         createNewUserAndRegisterHim();
         Response response = sendPatchRequestChangeUserFieldWithAuth("name");
@@ -27,7 +27,7 @@ public class ChangeUserDataTest extends BaseTest {
     }
 
     @Test
-    @Description("Положительный тест изменения email зарегистрированного пользователя с аутентификацией")
+    @Description("Позитивный тест изменения email зарегистрированного пользователя с аутентификацией")
     public void patchEmailCorrectSuccess() {
         createNewUserAndRegisterHim();
         Response response = sendPatchRequestChangeUserFieldWithAuth("email");
@@ -36,7 +36,7 @@ public class ChangeUserDataTest extends BaseTest {
     }
 
     @Test
-    @Description("Положительный тест изменения пароля зарегистрированного пользователя с аутентификацией")
+    @Description("Позитивный тест изменения пароля зарегистрированного пользователя с аутентификацией")
     public void patchPasswordCorrectSuccess() {
         createNewUserAndRegisterHim();
         Response response = sendPatchRequestChangeUserFieldWithAuth("password");

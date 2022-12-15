@@ -18,6 +18,13 @@ public class AssertHelper {
                 checkResponseCode(response));
     }
 
+    @Step("Проверяем, что статус код - Принято (202)")
+    public static void checkIfResponseCodeAccepted(Response response) {
+        Assert.assertEquals("Код ответа сервера не соответствует ожидаемому",
+                HttpStatus.SC_ACCEPTED,
+                checkResponseCode(response));
+    }
+
     @Step("Проверяем, что статус код - Запрещено (403)")
     public static void checkIfResponseCodeForbidden(Response response) {
         Assert.assertEquals("Код ответа сервера не соответствует ожидаемому",
@@ -35,28 +42,35 @@ public class AssertHelper {
     @Step("Проверяем, что значение по ключу \"message\" равно \"User already exists\"")
     public static void checkIfKeyMessageValueEqualsUserAlreadyExists(Response response) {
         Assert.assertEquals("Текст значения по ключу message не соответствет ожидаемому",
-                getUserAlreadyExists(),
+                userAlreadyExists,
                 getValueByKey(response, "message"));
     }
 
     @Step("Проверяем, что значение по ключу \"message\" равно \"Email, password and name are required fields\"")
     public static void checkIfKeyMessageValueEqualsSomeFieldsAreRequired(Response response) {
         Assert.assertEquals("Текст значения по ключу message не соответствет ожидаемому",
-                getSomeFieldsAreRequired(),
+                someFieldsAreRequired,
                 getValueByKey(response, "message"));
     }
 
     @Step("Проверяем, что значение по ключу \"message\" равно \"email or password are incorrect\"")
     public static void checkIfKeyMessageValueEqualsEmailOrPassAreIncorrect(Response response) {
         Assert.assertEquals("Текст значения по ключу success не соответствет ожидаемому",
-                getEmailOrPassAreIncorrect(),
+                emailOrPassAreIncorrect,
                 getValueByKey(response, "message"));
     }
 
     @Step("Проверяем, что значение по ключу \"message\" равно \"You should be authorised\"")
     public static void checkIfKeyMessageValueEqualsYouShouldBeAuthorised(Response response) {
         Assert.assertEquals("Текст значения по ключу success не соответствет ожидаемому",
-                getYouShouldBeAuthorised(),
+                youShouldBeAuthorised,
+                getValueByKey(response, "message"));
+    }
+
+    @Step("Проверяем, что значение по ключу \"message\" равно \"User successfully remove\"")
+    public static void checkIfKeyMessageValueEqualsUserSuccessfullyRemoved(Response response) {
+        Assert.assertEquals("Текст значения по ключу success не соответствет ожидаемому",
+                userSuccessfullyRemoved,
                 getValueByKey(response, "message"));
     }
 
