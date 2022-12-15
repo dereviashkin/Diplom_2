@@ -2,12 +2,12 @@ package date;
 
 public class Endpoints {
     //Получение данных об ингредиентах
-    private static String ingredients = "/ingredients";
+    public static final String ingredients = "/ingredients";
 
     //Создание заказа
-    private static String orders = "/orders";
+    public static final String orders = "/orders";
     //Получение всех заказов
-    private static String ordersAll = orders + "/all";
+    public static final String ordersAll = orders + "/all";
 
     /**
      * Восстановление и сброс пароля
@@ -18,60 +18,17 @@ public class Endpoints {
      * после нажимает кнопку «Сохранить». Происходит POST-запрос к эндпоинту
      * https://stellarburgers.nomoreparties.site/api/password-reset/reset .
      */
-    private static String passwordReset = "/password-reset";
-    private static String resetPassword = "/reset-password";
-    private static String passwordResetReset = "/password-reset/reset";
+    public static final String passwordReset = "/password-reset";
+    public static final String resetPassword = "/reset-password";
+    public static final String passwordResetReset = passwordReset + "/reset";
 
     //Авторизация и регистрация
-    private static String register = "/auth/register";
-    private static String login = "/auth/login";
-    private static String logout = "/auth/logout";
-    private static String token = "/auth/token";
+    private static final String auth = "/auth";
+    public static final String register = auth + "/register";
+    public static final String login = auth + "/login";
+    public static final String logout = auth + "/logout";
+    public static final String token = auth + "/token";
 
     //Пользователь
-    private static String user = "/auth/user";
-
-    public static String getIngredients() {
-        return ingredients;
-    }
-
-    public static String getOrders() {
-        return orders;
-    }
-
-    public static String getOrdersAll() {
-        return ordersAll;
-    }
-
-    public static String getPasswordReset() {
-        return passwordReset;
-    }
-
-    public static String getResetPassword() {
-        return resetPassword;
-    }
-
-    public static String getPasswordResetReset() {
-        return passwordResetReset;
-    }
-
-    public static String getLogin() {
-        return login;
-    }
-
-    public static String getLogout() {
-        return logout;
-    }
-
-    public static String getRegister() {
-        return register;
-    }
-
-    public static String getToken() {
-        return token;
-    }
-
-    public static String getUser() {
-        return user;
-    }
+    public static final String userInfo = auth + "/user";
 }
