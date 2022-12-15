@@ -8,11 +8,7 @@ public class AuthHelper {
     private static String password;
     private static String email;
 
-    public static String getAccessToken() {
-        return AccessToken;
-    }
-
-    private static String AccessToken;
+    private static String accessToken;
 
     public static String getPassword() {
         return password;
@@ -30,6 +26,11 @@ public class AuthHelper {
 
     @Step("Сохраняем токет аутентификации для входа")
     public static void saveAccessToken(Response response) {
-        AccessToken = response.then().extract().body().path("accessToken");
+        accessToken = response.then().extract().body().path("accessToken");
+    }
+
+    public static String getAccessToken() {
+        System.out.println("\nAccess Token: " + accessToken);
+        return accessToken;
     }
 }
