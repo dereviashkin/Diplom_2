@@ -10,6 +10,23 @@ import static io.restassured.RestAssured.given;
 
 public class RestHelper {
 
+    @Step("Отправляем GET запрос без авторизации")
+    public static Response sendGetRequestWithoutAuth(String endpoint) {
+        return given()
+                .header("Content-type", "application/json")
+                .log().uri().and().log().body()
+                .get(endpoint);
+    }
+
+    @Step("Отправляем GET запрос с авторизацией")
+    public static Response sendGetRequestWithAuth(String token, String endpoint) {
+        return given()
+                .header("Content-type", "application/json")
+                .header("Authorization", token)
+                .log().uri().and().log().body()
+                .get(endpoint);
+    }
+
     @Step("Отправляем POST запрос без авторизации")
     public static Response sendPostRequestNoAuth(Object entity, String endpoint) {
         return given()
@@ -29,16 +46,7 @@ public class RestHelper {
                 .post(endpoint);
     }
 
-    @Step("Отправляем GET запрос")
-    public static Response sendGetRequest(String endpoint, String token) {
-        return given()
-                .header("Content-type", "application/json")
-                .header("Authorization", token)
-                .log().uri().and().log().body()
-                .get(endpoint);
-    }
-
-    @Step("Отправляем PATCH запрос")
+    @Step("Отправляем PATCH запрос без авторизации")
     public static Response sendPatchRequestNoAuth(Object entity, String endpoint) {
         return given()
                 .header("Content-type", "application/json")
@@ -90,6 +98,6 @@ public class RestHelper {
 
     @Step("Используя AccessToken созданного пользователя получаем информацию о нём")
     public static Response getRegisteredUserInfo() {
-        return sendGetRequest(userInfoEndpoint, getAccessToken());
+        return sendGetRequestWithAuth(getAccessToken(), userInfoEndpoint);
     }
 }
