@@ -1,4 +1,4 @@
-package date;
+package data;
 
 public class Endpoints {
     //Получение данных об ингредиентах

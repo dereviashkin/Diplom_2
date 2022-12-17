@@ -3,7 +3,7 @@ package helpers;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
-import static date.Endpoints.userInfoEndpoint;
+import static data.Endpoints.userInfoEndpoint;
 import static helpers.AuthHelper.getAccessToken;
 import static helpers.UserHelper.changeRegisteredUserFieldRandom;
 import static io.restassured.RestAssured.given;

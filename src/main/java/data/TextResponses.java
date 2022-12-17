@@ -1,4 +1,4 @@
-package date;
+package data;
 
 public class TextResponses {
     //Создание пользователя
