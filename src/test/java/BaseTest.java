@@ -18,9 +18,11 @@ public class BaseTest {
 
     @After
     public void after() {
-        System.out.println("\n--== After each testcase ==--");
-        Response response = sendDeleteRequestWithAuth(getAccessToken(), userInfoEndpoint);
-        checkIfResponseCodeAccepted(response);
-        checkIfKeyMessageValueEqualsUserSuccessfullyRemoved(response);
+        if (getAccessToken() != null) {
+            System.out.println("\n--== After each testcase ==--");
+            Response response = sendDeleteRequestWithAuth(getAccessToken(), userInfoEndpoint);
+            checkIfResponseCodeAccepted(response);
+            checkIfKeyMessageValueEqualsUserSuccessfullyRemoved(response);
+        }
     }
 }

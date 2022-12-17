@@ -10,10 +10,20 @@ import static io.restassured.RestAssured.given;
 
 public class RestHelper {
 
-    @Step("Отправляем POST запрос")
-    public static Response sendPostRequest(Object entity, String endpoint) {
+    @Step("Отправляем POST запрос без авторизации")
+    public static Response sendPostRequestNoAuth(Object entity, String endpoint) {
         return given()
                 .header("Content-type", "application/json")
+                .log().uri().and().log().body()
+                .body(entity)
+                .post(endpoint);
+    }
+
+    @Step("Отправляем POST запрос с авторизацией")
+    public static Response sendPostRequestWithAuth(String token, Object entity, String endpoint) {
+        return given()
+                .header("Content-type", "application/json")
+                .header("Authorization", token)
                 .log().uri().and().log().body()
                 .body(entity)
                 .post(endpoint);

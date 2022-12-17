@@ -8,7 +8,7 @@ import static date.Endpoints.loginEndpoint;
 import static date.Endpoints.registerEndpoint;
 import static helpers.AuthHelper.*;
 import static helpers.GeneratorHelper.*;
-import static helpers.RestHelper.sendPostRequest;
+import static helpers.RestHelper.sendPostRequestNoAuth;
 
 public class UserHelper {
 
@@ -44,14 +44,14 @@ public class UserHelper {
     @Step("Берем заведомо существующие в базе данные и отправляем их на регистрацию")
     public static Response createExistingUserAndRegisterHim() {
         User user = existingUser();
-        return sendPostRequest(user, registerEndpoint);
+        return sendPostRequestNoAuth(user, registerEndpoint);
     }
 
     @Step("Берем сгенерированные данные пользователя и отправляем их на регистрацию")
     public static Response createNewUserAndRegisterHim() {
         User user = generateRandomUser();
         saveEmailAndPassword(user);
-        Response response = sendPostRequest(user, registerEndpoint);
+        Response response = sendPostRequestNoAuth(user, registerEndpoint);
         saveAccessToken(response);
         return response;
     }
@@ -60,28 +60,28 @@ public class UserHelper {
     public static Response createNewUserWithEmptyFieldAndRegisterHim(String field) {
         User user = generateRandomUserWithEmptyField(field);
         saveEmailAndPassword(user);
-        return sendPostRequest(user, registerEndpoint);
+        return sendPostRequestNoAuth(user, registerEndpoint);
     }
 
     //TODO переделать: нужен текущий экземпляр класса User, а не новый
     @Step("Берем созданного пользователя и логинимся им")
     public static Response getRegisteredUserAndLogin() {
         User user = new User(getEmail(), getPassword());
-        return sendPostRequest(user, loginEndpoint);
+        return sendPostRequestNoAuth(user, loginEndpoint);
     }
 
     //TODO переделать: нужен текущий экземпляр класса User с обнуленным полем, а не новый
     @Step("Берем созданного пользователя, ломаем пароль и логинимся им")
     public static Response getRegisteredUserIncorrectPasswordAndLogin() {
         User user = new User(getEmail(), "");
-        return sendPostRequest(user, loginEndpoint);
+        return sendPostRequestNoAuth(user, loginEndpoint);
     }
 
     //TODO переделать: нужен текущий экземпляр класса User с обнуленным полем, а не новый
     @Step("Берем созданного пользователя, ломаем email и логинимся им")
     public static Response getRegisteredUserIncorrectEmailAndLogin() {
         User user = new User("", getPassword());
-        return sendPostRequest(user, loginEndpoint);
+        return sendPostRequestNoAuth(user, loginEndpoint);
     }
 
     //TODO переделать: нужен текущий экземпляр класса User с рандомным полем, а не новый

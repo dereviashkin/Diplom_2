@@ -25,10 +25,10 @@ public class AssertHelper {
                 checkResponseCode(response));
     }
 
-    @Step("Проверяем, что статус код - Запрещено (403)")
-    public static void checkIfResponseCodeForbidden(Response response) {
+    @Step("Проверяем, что статус код - Некорректный запрос (400)")
+    public static void checkIfResponseCodeBadRequest(Response response) {
         Assert.assertEquals("Код ответа сервера не соответствует ожидаемому",
-                HttpStatus.SC_FORBIDDEN,
+                HttpStatus.SC_BAD_REQUEST,
                 checkResponseCode(response));
     }
 
@@ -36,6 +36,20 @@ public class AssertHelper {
     public static void checkIfResponseCodeUnauthorized(Response response) {
         Assert.assertEquals("Код ответа сервера не соответствует ожидаемому",
                 HttpStatus.SC_UNAUTHORIZED,
+                checkResponseCode(response));
+    }
+
+    @Step("Проверяем, что статус код - Запрещено (403)")
+    public static void checkIfResponseCodeForbidden(Response response) {
+        Assert.assertEquals("Код ответа сервера не соответствует ожидаемому",
+                HttpStatus.SC_FORBIDDEN,
+                checkResponseCode(response));
+    }
+
+    @Step("Проверяем, что статус код - Внутренняя ошибка сервера (500)")
+    public static void checkIfResponseCodeInternalServerError(Response response) {
+        Assert.assertEquals("Код ответа сервера не соответствует ожидаемому",
+                HttpStatus.SC_INTERNAL_SERVER_ERROR,
                 checkResponseCode(response));
     }
 
@@ -71,6 +85,13 @@ public class AssertHelper {
     public static void checkIfKeyMessageValueEqualsUserSuccessfullyRemoved(Response response) {
         Assert.assertEquals("Текст значения по ключу success не соответствет ожидаемому",
                 userSuccessfullyRemoved,
+                getValueByKey(response, "message"));
+    }
+
+    @Step("Проверяем, что значение по ключу \"message\" равно \"Ingredient ids must be provided\"")
+    public static void checkIfKeyMessageValueEqualsIngredientIdMustBeProvided(Response response) {
+        Assert.assertEquals("Текст значения по ключу success не соответствет ожидаемому",
+                ingredientIdMustBeProvided,
                 getValueByKey(response, "message"));
     }
 
