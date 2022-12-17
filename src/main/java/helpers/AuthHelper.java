@@ -32,4 +32,8 @@ public class AuthHelper {
     public static String getAccessToken() {
         return accessToken;
     }
+
+    public static void nullToken() {
+        accessToken = null;
+    }
 }
