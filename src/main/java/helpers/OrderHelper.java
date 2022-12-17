@@ -7,8 +7,7 @@ import io.restassured.response.Response;
 import static date.Endpoints.ordersEndpoint;
 import static helpers.AuthHelper.getAccessToken;
 import static helpers.GeneratorHelper.randomString;
-import static helpers.RestHelper.sendPostRequestNoAuth;
-import static helpers.RestHelper.sendPostRequestWithAuth;
+import static helpers.RestHelper.*;
 
 public class OrderHelper {
 
@@ -55,5 +54,15 @@ public class OrderHelper {
     @Step("Отправляем пустой заказ с авторизацией")
     public static Response sendEmptyOrderWithAuth() {
         return sendPostRequestWithAuth(getAccessToken(), createEmptyOrder(), ordersEndpoint);
+    }
+
+    @Step("Отправляем запрос на список заказов авторизованным пользователем")
+    public static Response getOrderByUserWithAuth() {
+        return sendGetRequestWithAuth(getAccessToken(), ordersEndpoint);
+    }
+
+    @Step("Получаем запрос на список заказов неавторизованным пользователем")
+    public static Response getOrderByUserWithoutAuth() {
+        return sendGetRequestWithoutAuth(ordersEndpoint);
     }
 }
