@@ -5,7 +5,7 @@ import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import org.junit.Assert;
 
-import static date.TextResponses.*;
+import static data.TextResponses.*;
 import static helpers.RestHelper.checkResponseCode;
 import static helpers.RestHelper.getValueByKey;
 

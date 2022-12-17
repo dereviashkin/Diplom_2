@@ -4,7 +4,7 @@ import entities.Order;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
-import static date.Endpoints.ordersEndpoint;
+import static data.Endpoints.ordersEndpoint;
 import static helpers.AuthHelper.getAccessToken;
 import static helpers.GeneratorHelper.randomString;
 import static helpers.RestHelper.*;

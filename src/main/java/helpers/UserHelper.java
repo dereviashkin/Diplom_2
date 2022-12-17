@@ -4,8 +4,8 @@ import entities.User;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
-import static date.Endpoints.loginEndpoint;
-import static date.Endpoints.registerEndpoint;
+import static data.Endpoints.loginEndpoint;
+import static data.Endpoints.registerEndpoint;
 import static helpers.AuthHelper.*;
 import static helpers.GeneratorHelper.*;
 import static helpers.RestHelper.sendPostRequestNoAuth;

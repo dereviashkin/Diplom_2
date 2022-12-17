@@ -3,7 +3,7 @@ import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.BeforeClass;
 
-import static date.Endpoints.userInfoEndpoint;
+import static data.Endpoints.userInfoEndpoint;
 import static helpers.AssertHelper.checkIfKeyMessageValueEqualsUserSuccessfullyRemoved;
 import static helpers.AssertHelper.checkIfResponseCodeAccepted;
 import static helpers.AuthHelper.getAccessToken;
