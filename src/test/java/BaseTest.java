@@ -7,6 +7,7 @@ import static date.Endpoints.userInfoEndpoint;
 import static helpers.AssertHelper.checkIfKeyMessageValueEqualsUserSuccessfullyRemoved;
 import static helpers.AssertHelper.checkIfResponseCodeAccepted;
 import static helpers.AuthHelper.getAccessToken;
+import static helpers.AuthHelper.nullToken;
 import static helpers.RestHelper.sendDeleteRequestWithAuth;
 
 public class BaseTest {
@@ -23,6 +24,7 @@ public class BaseTest {
             Response response = sendDeleteRequestWithAuth(getAccessToken(), userInfoEndpoint);
             checkIfResponseCodeAccepted(response);
             checkIfKeyMessageValueEqualsUserSuccessfullyRemoved(response);
+            nullToken();
         }
     }
 }
