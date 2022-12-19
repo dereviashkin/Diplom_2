@@ -1,4 +1,4 @@
-package helpers;
+package steps;
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
@@ -6,10 +6,10 @@ import org.apache.http.HttpStatus;
 import org.junit.Assert;
 
 import static data.TextResponses.*;
-import static helpers.RestHelper.checkResponseCode;
-import static helpers.RestHelper.getValueByKey;
+import static steps.RestSteps.checkResponseCode;
+import static steps.RestSteps.getValueByKey;
 
-public class AssertHelper {
+public class CheckSteps {
 
     @Step("Проверяем, что статус код - ОК (200)")
     public static void checkIfResponseCodeOk(Response response) {

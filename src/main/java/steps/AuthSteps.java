@@ -1,10 +1,10 @@
-package helpers;
+package steps;
 
 import entities.User;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
-public class AuthHelper {
+public class AuthSteps {
     private static String password;
     private static String email;
 

@@ -1,4 +1,4 @@
-package helpers;
+package steps;
 
 import entities.User;
 import io.qameta.allure.Step;
@@ -6,11 +6,11 @@ import io.restassured.response.Response;
 
 import static data.Endpoints.loginEndpoint;
 import static data.Endpoints.registerEndpoint;
-import static helpers.AuthHelper.*;
-import static helpers.GeneratorHelper.*;
-import static helpers.RestHelper.sendPostRequestNoAuth;
+import static steps.AuthSteps.*;
+import static steps.GeneratorSteps.*;
+import static steps.RestSteps.sendPostRequestNoAuth;
 
-public class UserHelper {
+public class UserSteps {
 
     @Step("Гененируем случаного пользователя")
     private static User generateRandomUser() {

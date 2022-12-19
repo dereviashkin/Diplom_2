@@ -1,15 +1,15 @@
-import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.Test;
 
-import static helpers.AssertHelper.*;
-import static helpers.OrderHelper.*;
-import static helpers.UserHelper.createNewUserAndRegisterHim;
+import static steps.CheckSteps.*;
+import static steps.OrderSteps.*;
+import static steps.UserSteps.createNewUserAndRegisterHim;
 
 public class GetOrderByUserTest extends BaseTest {
 
     @Test
-    @Description("Позитивный тест получения списка заказов авторизованным пользователем")
+    @DisplayName("Позитивный тест получения списка заказов авторизованным пользователем")
     public void getOrderByUserCorrectSuccess() {
         createNewUserAndRegisterHim();
         sendCommonOrderWithAuth();
@@ -19,7 +19,7 @@ public class GetOrderByUserTest extends BaseTest {
     }
 
     @Test
-    @Description("Негативный тест получения списка заказов неавторизованным пользователем")
+    @DisplayName("Негативный тест получения списка заказов неавторизованным пользователем")
     public void getOrderByUserNoAuthFail() {
         createNewUserAndRegisterHim();
         sendCommonOrderWithAuth();

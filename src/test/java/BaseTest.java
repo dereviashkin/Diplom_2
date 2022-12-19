@@ -4,11 +4,11 @@ import org.junit.After;
 import org.junit.BeforeClass;
 
 import static data.Endpoints.userInfoEndpoint;
-import static helpers.AssertHelper.checkIfKeyMessageValueEqualsUserSuccessfullyRemoved;
-import static helpers.AssertHelper.checkIfResponseCodeAccepted;
-import static helpers.AuthHelper.getAccessToken;
-import static helpers.AuthHelper.nullToken;
-import static helpers.RestHelper.sendDeleteRequestWithAuth;
+import static steps.CheckSteps.checkIfKeyMessageValueEqualsUserSuccessfullyRemoved;
+import static steps.CheckSteps.checkIfResponseCodeAccepted;
+import static steps.AuthSteps.getAccessToken;
+import static steps.AuthSteps.nullToken;
+import static steps.RestSteps.sendDeleteRequestWithAuth;
 
 public class BaseTest {
 

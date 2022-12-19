@@ -1,15 +1,14 @@
-package helpers;
+package steps;
 
 import com.github.javafaker.Faker;
 import io.qameta.allure.Step;
 
 import java.util.UUID;
 
-public class GeneratorHelper {
+public class GeneratorSteps {
 
     private static String name;
 
-    @Step("Генерируем строку с помощью UUID указанной длины")
     public static String randomString(int length) {
         return UUID.randomUUID().toString().replace("-", "").substring(0, length);
     }

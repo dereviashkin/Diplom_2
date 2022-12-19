@@ -1,14 +1,14 @@
-import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.Test;
 
-import static helpers.AssertHelper.*;
-import static helpers.UserHelper.*;
+import static steps.CheckSteps.*;
+import static steps.UserSteps.*;
 
 public class CreateUserTest extends BaseTest {
 
     @Test
-    @Description("Негативный тест создания пользователя, который уже есть в базе")
+    @DisplayName("Негативный тест создания пользователя, который уже есть в базе")
     public void createUserExistsFail() {
         Response response = createExistingUserAndRegisterHim();
         checkIfResponseCodeForbidden(response);
@@ -16,7 +16,7 @@ public class CreateUserTest extends BaseTest {
     }
 
     @Test
-    @Description("Позитивный тест создания нового пользователя")
+    @DisplayName("Позитивный тест создания нового пользователя")
     public void createUserNewSuccess() {
         Response response = createNewUserAndRegisterHim();
         checkIfResponseCodeOk(response);
@@ -24,7 +24,7 @@ public class CreateUserTest extends BaseTest {
     }
 
     @Test
-    @Description("Негативный тест создания нового пользователя с незаполненным email")
+    @DisplayName("Негативный тест создания нового пользователя с незаполненным email")
     public void createUserNewWithEmptyPasswordFail() {
         Response response = createNewUserWithEmptyFieldAndRegisterHim("password");
         checkIfResponseCodeForbidden(response);
@@ -32,7 +32,7 @@ public class CreateUserTest extends BaseTest {
     }
 
     @Test
-    @Description("Негативный тест создания нового пользователя с незаполненным именем")
+    @DisplayName("Негативный тест создания нового пользователя с незаполненным именем")
     public void createUserNewWithEmptyNameFail() {
         Response response = createNewUserWithEmptyFieldAndRegisterHim("name");
         checkIfResponseCodeForbidden(response);
@@ -40,7 +40,7 @@ public class CreateUserTest extends BaseTest {
     }
 
     @Test
-    @Description("Негативный тест создания нового пользователя с незаполненным паролем")
+    @DisplayName("Негативный тест создания нового пользователя с незаполненным паролем")
     public void createUserNewWithEmptyEmailFail() {
         Response response = createNewUserWithEmptyFieldAndRegisterHim("email");
         checkIfResponseCodeForbidden(response);

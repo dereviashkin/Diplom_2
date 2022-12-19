@@ -1,15 +1,15 @@
-package helpers;
+package steps;
 
 import entities.Order;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
 import static data.Endpoints.ordersEndpoint;
-import static helpers.AuthHelper.getAccessToken;
-import static helpers.GeneratorHelper.randomString;
-import static helpers.RestHelper.*;
+import static steps.AuthSteps.getAccessToken;
+import static steps.GeneratorSteps.randomString;
+import static steps.RestSteps.*;
 
-public class OrderHelper {
+public class OrderSteps {
 
     //TODO в шаг @Before добавить получение всех ингров, десериализовать через класс Ingredients, сохранять как массив экземпляров класса,
     // формировать рандомную булку по значению ключа type: случайный bun + случайный main + случайный sauce

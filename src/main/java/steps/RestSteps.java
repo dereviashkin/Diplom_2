@@ -1,14 +1,14 @@
-package helpers;
+package steps;
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
 import static data.Endpoints.userInfoEndpoint;
-import static helpers.AuthHelper.getAccessToken;
-import static helpers.UserHelper.changeRegisteredUserFieldRandom;
+import static steps.AuthSteps.getAccessToken;
+import static steps.UserSteps.changeRegisteredUserFieldRandom;
 import static io.restassured.RestAssured.given;
 
-public class RestHelper {
+public class RestSteps {
 
     @Step("Отправляем GET запрос без авторизации")
     public static Response sendGetRequestWithoutAuth(String endpoint) {
